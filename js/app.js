@@ -28,7 +28,7 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(loc) {
-    this.sprite = 'image/char-boy.png';
+    this.sprite = 'images/char-boy.png';
     this.loc = loc;
 }
 
@@ -42,9 +42,14 @@ Player.prototype.render = function() {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
+var enemy1 = new Enemy(1, 4);
+var enemy2 = new Enemy(2, 8);
+var enemy3 = new Enemy(3, 2);
+
+allEnemies = [enemy1, enemy2, enemy3];
+
 // Place the player object in a variable called player
-
-
+player = new Player(3);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
