@@ -43,18 +43,28 @@ Player.prototype.render = function() {
 }
 
 Player.prototype.handleInput = function(key) {
+
     switch (key) {
         case 'up':
-            player.y += -83;
+            if(player.y >= 78) {
+                player.y += -83;
+            }
             break;
         case 'down':
-            player.y += 83;
+            if(player.y <= 327) {
+                player.y += 83;
+            }
             break;
         case 'left':
-            player.x += -101;
+            if(player.x >= 83) {
+                player.x += -101;
+            }
             break;
         case 'right':
-            player.x += 101;
+            console.log(player.x);
+            if(player.x <= 303) {
+                player.x += 101;
+            }
             break;
     }
 }
