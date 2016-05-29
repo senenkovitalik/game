@@ -23,6 +23,9 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    if(this.x > 505) {
+        this.x = -101;
+    }
 };
 
 // Now write your own player class
@@ -71,9 +74,9 @@ Player.prototype.handleInput = function(key) {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var enemy1 = new Enemy(0, 70, 20);
-var enemy2 = new Enemy(0, 150, 14);
-var enemy3 = new Enemy(0, 230, 30);
+var enemy1 = new Enemy(0, 70, 40);
+var enemy2 = new Enemy(0, 150, 54);
+var enemy3 = new Enemy(0, 230, 70);
 
 allEnemies = [enemy1, enemy2, enemy3];
 
