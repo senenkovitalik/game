@@ -1,9 +1,13 @@
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
+
+    // initial position by row
+    var row = [70, 150, 230, 310]; // from top to bottom
+
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = x;
-    this.y = y;
+    this.y = row[y];
     this.speed = speed;
 
     // The image/sprite for our enemies, this uses
@@ -23,6 +27,8 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+    // When gubug reach the end of playground it being moving from start
     if(this.x > 505) {
         this.x = -101;
     }
@@ -74,14 +80,18 @@ Player.prototype.handleInput = function(key) {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var enemy1 = new Enemy(0, 70, 40);
-var enemy2 = new Enemy(0, 150, 54);
-var enemy3 = new Enemy(0, 230, 70);
+var enemy11 = new Enemy(0, 0, 160);
+var enemy12 = new Enemy(-303, 0, 160);
+var enemy21 = new Enemy(0, 1, 100);
+var enemy22 = new Enemy(-303, 1, 100);
+var enemy31 = new Enemy(0, 2, 130);
+var enemy32 = new Enemy(-303, 2, 130);
+var enemy4 = new Enemy(-190, 3, 180);
 
-allEnemies = [enemy1, enemy2, enemy3];
+allEnemies = [enemy11, enemy12, enemy21, enemy22, enemy31, enemy32, enemy4];
 
 // Place the player object in a variable called player
-player = new Player(0, 5*82);
+player = new Player(202, 5*82);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
