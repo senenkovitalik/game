@@ -47,7 +47,11 @@ var Player = function(x, y, speed) {
 Player.prototype.update = function() {
     // When a player reaches the top of playground he will be removed to bottom.
     if(this.y === -5) {
-        setTimeout( function() { player.y = 410; }, 1000 );
+        setTimeout(
+            function() {
+                player.x = 202;
+                player.y = 410;
+            }, 1000 );
     }
 }
 
@@ -89,9 +93,9 @@ var enemy21 = new Enemy(0, 1, 100);
 var enemy22 = new Enemy(-303, 1, 100);
 var enemy31 = new Enemy(0, 2, 130);
 var enemy32 = new Enemy(-303, 2, 130);
-var enemy4 = new Enemy(-190, 3, 180);
+// var enemy4 = new Enemy(-190, 3, 180);
 
-allEnemies = [enemy11, enemy12, enemy21, enemy22, enemy31, enemy32, enemy4];
+allEnemies = [enemy11, enemy12, enemy21, enemy22, enemy31, enemy32];
 
 // Place the player object in a variable called player
 player = new Player(202, 410);

@@ -171,18 +171,14 @@ var Engine = (function(global) {
                 
                 x_right: enemy.x+98,
                 y_right: enemy.y+110,
-                
             };
 
             var player_size = {
                 x_left: player.x+17,
                 y_left: player.y+93,
-                x_top: player.x+50,
-                y_top: player.y+63,
+                
                 x_right: player.x+83,
                 y_right: player.y+93,
-                x_bottom: player.x+50,
-                y_bottom: player.y+140
             };
 
             // bug and player locate on the same line
@@ -190,8 +186,13 @@ var Engine = (function(global) {
                 bug.y_right <= player_size.y_left+20) {
                 
                 // Collision occur
-                if(bug.x_right >= player_size.x_left) {
+                if(bug.x_right >= player_size.x_left && 
+                    bug.x_left <= player_size.x_right) {
                     
+                    console.log("Game over");
+                    // move player to start
+                    player.x = 202;
+                    player.y = 410;
                 }
             }
 
