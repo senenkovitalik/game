@@ -70,7 +70,6 @@ Player.prototype.handleInput = function(key) {
             }
             break;
         case 'right':
-            console.log(player.x);
             if(player.x <= 303) {
                 player.x += 101;
             }
