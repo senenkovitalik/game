@@ -80,7 +80,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -161,6 +161,41 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+    }
+
+    function checkCollisions() {
+        allEnemies.forEach( function(enemy) {
+            var bug = {
+                x_left: enemy.x+1,
+                y_left: enemy.y+110,
+                
+                x_right: enemy.x+98,
+                y_right: enemy.y+110,
+                
+            };
+
+            var player_size = {
+                x_left: player.x+17,
+                y_left: player.y+93,
+                x_top: player.x+50,
+                y_top: player.y+63,
+                x_right: player.x+83,
+                y_right: player.y+93,
+                x_bottom: player.x+50,
+                y_bottom: player.y+140
+            };
+
+            // bug and player locate on the same line
+            if(bug.y_right >= player_size.y_left-20 && 
+                bug.y_right <= player_size.y_left+20) {
+                
+                // Collision occur
+                if(bug.x_right >= player_size.x_left) {
+                    
+                }
+            }
+
+        });
     }
 
     /* Go ahead and load all of the images we know we're going to need to

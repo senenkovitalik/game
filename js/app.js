@@ -37,13 +37,14 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function(x, y) {
+var Player = function(x, y, speed) {
     this.sprite = 'images/char-boy.png';
     this.x = x;
     this.y = y;
+    this.speed = speed;
 }
 
-Player.prototype.update = function(dt) {
+Player.prototype.update = function() {
     // When a player reaches the top of playground he will be removed to bottom.
     if(this.y === -5) {
         setTimeout( function() { player.y = 410; }, 1000 );
