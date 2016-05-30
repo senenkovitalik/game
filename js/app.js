@@ -46,7 +46,7 @@ var Player = function(x, y) {
 Player.prototype.update = function(dt) {
     // When a player reaches the top of playground he will be removed to bottom.
     if(this.y === -5) {
-        setTimeout( function() { player.y = 410; }, 2000 );
+        setTimeout( function() { player.y = 410; }, 1000 );
     }
 }
 
@@ -58,23 +58,23 @@ Player.prototype.handleInput = function(key) {
 
     switch (key) {
         case 'up':
-            if(player.y >= 78) {
-                player.y += -83;
+            if(this.y >= 78) {
+                this.y += -83;
             }
             break;
         case 'down':
-            if(player.y <= 327) {
-                player.y += 83;
+            if(this.y <= 327) {
+                this.y += 83;
             }
             break;
         case 'left':
-            if(player.x >= 83) {
-                player.x += -101;
+            if(this.x >= 83) {
+                this.x += -101;
             }
             break;
         case 'right':
-            if(player.x <= 303) {
-                player.x += 101;
+            if(this.x <= 303) {
+                this.x += 101;
             }
             break;
     }
