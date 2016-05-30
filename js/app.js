@@ -22,16 +22,16 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += this.speed*dt;
-};
-
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
     // When gubug reach the end of playground it being moving from start
     if(this.x > 505) {
         this.x = -101;
     }
+};
+
+// Draw the enemy on the screen, required method for game
+Enemy.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now write your own player class
@@ -44,7 +44,10 @@ var Player = function(x, y) {
 }
 
 Player.prototype.update = function(dt) {
-    
+    // When a player reaches the top of playground he will be removed to bottom.
+    if(this.y === -5) {
+        setTimeout( function() { player.y = 410; }, 2000 );
+    }
 }
 
 Player.prototype.render = function() {
@@ -90,7 +93,7 @@ var enemy4 = new Enemy(-190, 3, 180);
 allEnemies = [enemy11, enemy12, enemy21, enemy22, enemy31, enemy32, enemy4];
 
 // Place the player object in a variable called player
-player = new Player(202, 5*82);
+player = new Player(202, 410);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
