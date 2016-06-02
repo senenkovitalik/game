@@ -84,8 +84,7 @@
     function isReady() {
         var ready = true;
         for(var k in resourceCache) {
-            if(resourceCache.hasOwnProperty(k) &&
-               !resourceCache[k]) {
+            if(resourceCache.hasOwnProperty(k) && !resourceCache[k]) {
                 ready = false;
             }
         }

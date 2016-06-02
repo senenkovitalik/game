@@ -25,8 +25,8 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = 505;
-    canvas.height = 606;
+    // canvas.width = 505;
+    // canvas.height = 606;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -162,6 +162,63 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+    }
+
+    function choosePlayer() {
+
+        var x = 0;
+        var url, img;
+
+        canvas.width = 601;
+        canvas.height = 500;
+
+        // each player has it own position at area 
+        var sizes = {
+            boy:      { x0: 0,   y0: 0, x1: 101, y1: 171, name: 0 },
+            cat:      { x0: 125, y0: 0, x1: 226, y1: 171, name: 1 }, 
+            horn:     { x0: 250, y0: 0, x1: 351, y1: 171, name: 2 }, 
+            pink:     { x0: 375, y0: 0, x1: 476, y1: 171, name: 3 },
+            princess: { x0: 500, y0: 0, x1: 601, y1: 171, name: 4 }
+        };
+
+        // array of player's images
+        var playerImg = [
+            'images/char-boy.png',
+            'images/char-cat-girl.png',
+            'images/char-horn-girl.png',
+            'images/char-pink-girl.png',
+            'images/char-princess-girl.png'
+        ];
+
+        for(x; x<5; x++) {
+            url = playerImg[x];
+            ctx.drawImage(Resources.get(url), x*125, 0);
+        };
+
+        // When user click on player's picture, create new object named User
+        canvas.addEventListener("mousedown", function(event) {
+            // get x, y position of user click
+            var x = event.clientX;
+            var y = event.clientY;
+
+            // if user click on area of some player
+            for (var k in sizes) {
+                if(x >= sizes[k].x0 && x <= sizes[k].x1
+                    && y <= sizes[k].y1 && y >= sizes[k].y0) {
+
+                    img = playerImg[sizes[k].name];
+                }
+            }
+        }, false);
+
+        // if(player.sprite === null) {
+        //     setInterval(choosePlayer, 1000);
+        // } else {
+        //     player.sprite = img;
+
+        //     canvas.width = 505;
+        //     canvas.height = 606;
+        // }
     }
 
     function checkCollisions() {
